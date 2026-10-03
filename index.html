@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sítio Santo Antônio - Pesqueiro & Lazer em Turiúba - SP</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+    :root {
+      --bg-dark: #0d131a;
+      --card-bg: #16202c;
+      --accent-green: #2ecc71;
+      --accent-blue: #3498db;
+      --accent-gold: #f1c40f;
+      --text-main: #ffffff;
+      --text-sub: #a0aec0;
+      --border-color: #233346;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+    body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+    /* Navbar Fixa */
+    nav { position: fixed; top: 0; left: 0; width: 100%; background: rgba(13, 19, 26, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border-color); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.4rem; font-weight: 800; color: var(--accent-green); display: flex; align-items: center; gap: 10px; }
+    .nav-links { display: flex; gap: 25px; list-style: none; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+    .nav-links a:hover { color: var(--accent-green); }
+
+    /* Banner Principal (Hero) */
+    .hero { min-height: 95vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 60px; background: linear-gradient(180deg, rgba(13,19,26,0.6) 0%, rgba(13,19,26,1) 100%), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; }
+    .hero-content { max-width: 850px; }
+    .badge { display: inline-block; background: rgba(46, 204, 113, 0.15); color: var(--accent-green); padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; border: 1px solid rgba(46, 204, 113, 0.3); }
+    .hero h1 { font-size: 3.3rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px; background: linear-gradient(180deg, #ffffff 0%, #cbd5e0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.25rem; color: var(--text-sub); margin-bottom: 35px; }
+
+    /* Botões */
+    .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); transition: 0.3s transform; }
+    .btn-primary:hover { transform: translateY(-3px); }
+    .btn-secondary { background: var(--card-bg); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--border-color); transition: 0.3s; }
+
+    /* Seções */
+    section { padding: 90px 5%; max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 55px; }
+    .section-header h2 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+    .section-header p { color: var(--text-sub); font-size: 1.1rem; }
+
+    /* Grid de Atrações */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 30px; }
+    .card { background: var(--card-bg); border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); border-color: var(--accent-green); }
+    .card img { width: 100%; height: 230px; object-fit: cover; }
+    .card-body { padding: 25px; }
+    .tag { background: rgba(52, 152, 219, 0.2); color: var(--accent-blue); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    .card-body h3 { font-size: 1.35rem; margin: 12px 0 8px; color: #fff; }
+    .card-body p { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 20px; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 15px; }
+    .price { font-size: 1.1rem; font-weight: 800; color: var(--accent-green); }
+
+    /* Informações do Local */
+    .info-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .info-box { background: var(--card-bg); padding: 35px; border-radius: 20px; border: 1px solid var(--border-color); }
+    .info-box i { font-size: 2.3rem; color: var(--accent-green); margin-bottom: 20px; }
+    .info-box h3 { font-size: 1.4rem; margin-bottom: 15px; color: #fff; }
+    .info-list { list-style: none; }
+    .info-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-sub); }
+
+    footer { background: #080c11; border-top: 1px solid var(--border-color); padding: 35px 5%; text-align: center; color: var(--text-sub); font-size: 0.9rem; }
+
+    @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- Menu de Navegação -->
+  <nav>
+    <div class="logo">
+      <i class="fa-solid fa-fish"></i> SÍTIO SANTO ANTÔNIO
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#atracoes">Atrações & Porções</a></li>
+      <li><a href="#informacoes">Informações</a></li>
+      <li><a href="#localizacao">Contato & Mapa</a></li>
+    </ul>
+  </nav>
+
+  <!-- Banner Principal -->
+  <div class="hero" id="inicio">
+    <div class="hero-content">
+      <span class="badge">🎣 Pesqueiro, Piscinas & Lazer Familiar • Turiúba - SP</span>
+      <h1>Sítio Santo Antônio</h1>
+      <p>O lugar perfeito para relaxar com a família! Lago para pesca, parque aquático com piscinas e tobogã, além das melhores porções de peixe frito da região.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/5518998219628?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20S%C3%ADtio%20Santo%20Ant%C3%B4nio." target="_blank" class="btn-primary">
+          <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp: (18) 99821-9628
+        </a>
+        <a href="#atracoes" class="btn-secondary">Conhecer o Local</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção de Atrações -->
+  <section id="atracoes">
+    <div class="section-header">
+      <h2>O Que Você Encontra no Sítio</h2>
+      <p>Lazer completo para todas as idades em meio à natureza</p>
+    </div>
+
+    <div class="grid">
+      <!-- Lago de Pesca -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Lago para Pesca Esportiva">
+        <div class="card-body">
+          <span class="tag">Pesca Esportiva</span>
+          <h3>Lago de Pesca Ampla</h3>
+          <p>Área verde arborizada com deck e pontos de pesca ao redor do lago. Ambiente tranquilo e ideal para os amantes da pesca.</p>
+          <div class="card-footer">
+            <span class="price">Natureza & Lazer</span>
+            <i class="fa-solid fa-fish" style="color: var(--accent-green)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Porções Especiais -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80" alt="Porções de Peixe Frito">
+        <div class="card-body">
+          <span class="tag" style="background: rgba(241, 196, 15, 0.2); color: var(--accent-gold);">Especialidade da Casa</span>
+          <h3>Porções de Peixe Frito & Petiscos</h3>
+          <p>Porções generosas de peixe frito crocante com limão, molhos especiais e bebidas trincando de geladas.</p>
+          <div class="card-footer">
+            <span class="price">Gastronomia</span>
+            <i class="fa-solid fa-utensils" style="color: var(--accent-gold)"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Área de Lazer / Piscinas -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" alt="Piscinas e Tobogã">
+        <div class="card-body">
+          <span class="tag" style="background: rgba(46, 204, 113, 0.2); color: var(--accent-green);">Parque Aquático</span>
+          <h3>Piscinas com Tobogã</h3>
+          <p>Área de piscinas refrescantes com tobogã e mesas cobertas para toda a família curtir os dias ensolarados.</p>
+          <div class="card-footer">
+            <span class="price">Diversão Garanta</span>
+            <i class="fa-solid fa-water-ladder" style="color: var(--accent-green)"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Informações e Valores -->
+  <section id="informacoes" style="background: rgba(22, 32, 44, 0.4); max-width: 100%; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-header">
+        <h2>Funcionamento & Valores</h2>
+        <p>Saiba mais sobre como nos visitar em Turiúba - SP</p>
+      </div>
+
+      <div class="info-container">
+        <div class="info-box">
+          <i class="fa-solid fa-circle-info"></i>
+          <h3>Valores Média por Pessoa</h3>
+          <ul class="info-list">
+            <li><span>Estimativa de Gasto:</span> <strong>R$ 80 - 100 por pessoa</strong></li>
+            <li><span>Refeição no Local:</span> <strong>Sim (Mesa & Atendimento)</strong></li>
+            <li><span>Abertura do Local:</span> <strong>Abre às 11:00</strong></li>
+            <li><span>Ambiente:</span> <strong>Familiar / Área Verde</strong></li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <i class="fa-solid fa-star"></i>
+          <h3>Estrutura do Sítio</h3>
+          <ul class="info-list">
+            <li><span>Pesca:</span> <strong>Lagos amplos com sombra</strong></li>
+            <li><span>Lazer:</span> <strong>Piscinas com tobogã</strong></li>
+            <li><span>Bar & Restaurante:</span> <strong>Porções e Bebidas</strong></li>
+            <li><span>Estacionamento:</span> <strong>Amplo no local</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Localização e Contato -->
+  <section id="localizacao">
+    <div class="section-header">
+      <h2>Onde Fica o Sítio Santo Antônio</h2>
+      <p>Sítio Santo Antônio, Turiúba - SP, CEP 15280-000</p>
+    </div>
+
+    <div class="info-container">
+      <div class="info-box" style="display: flex; flex-direction: column; justify-content: center;">
+        <i class="fa-solid fa-location-dot"></i>
+        <h3>Entre em Contato</h3>
+        <p style="color: var(--text-sub); margin-bottom: 20px;">
+          📍 <strong>Endereço:</strong> Sítio Santo Antônio, Turiúba - SP<br>
+          📮 <strong>CEP:</strong> 15280-000<br>
+          📞 <strong>WhatsApp/Telefone:</strong> (18) 99821-9628
+        </p>
+        <a href="https://wa.me/5518998219628?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es." target="_blank" class="btn-primary" style="justify-content: center;">
+          <i class="fa-brands fa-whatsapp"></i> Mandar Mensagem no WhatsApp
+        </a>
+      </div>
+
+      <div class="info-box" style="padding: 10px; overflow: hidden;">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.123456789!2d-50.1234567!3d-21.0000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDAwJzAwLjAiUyA1MMKwMDcnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+          width="100%" 
+          height="300" 
+          style="border:0; border-radius: 12px;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Sítio Santo Antônio • Pesqueiro & Lazer em Turiúba - SP.</p>
+  </footer>
+
+</body>
+</html>
